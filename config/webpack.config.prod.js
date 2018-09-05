@@ -182,7 +182,7 @@ module.exports = {
                   namedExport: true,
                   camelCase: true,
                   localIdentName: "[local]---[hash:base64:8]",
-                  sourceMap: false
+                  sourceMap: shouldUseSourceMap
                 },
               },
               {
@@ -203,13 +203,13 @@ module.exports = {
                       flexbox: 'no-2009',
                     }),
                   ],
-                  sourcemap: false
+                  sourcemap: shouldUseSourceMap
                 },
               },
               {
                 loader: require.resolve('sass-loader'),
                 options: {
-                  sourcemap: false
+                  sourcemap: shouldUseSourceMap
                 }
               }
             ],
