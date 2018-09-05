@@ -91,7 +91,9 @@
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"
     ],
     "moduleNameMapper": {
-      "^react-native$": "react-native-web"
+      "^react-native$": "react-native-web",
+      "^assets/(.*)": "<rootDir>/src/assets/$1",
+      "^components/(.*)": "<rootDir>/src/components/$1"
     },
     "moduleFileExtensions": [
       "web.ts",
