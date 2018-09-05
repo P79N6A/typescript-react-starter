@@ -1,0 +1,19 @@
+@mixin btn {
+  display: inline-block;
+  padding: 0 10px;
+  height: 32px;
+  background: $button-default-color;
+  border: 1px solid $button-border-color;
+  border-radius: 2px;
+  color: $button-font-color;
+  text-align: center;
+  vertical-align: middle;
+  font-size: $font-size-small;
+  cursor: pointer;
+}
+
+@mixin icon {
+  display: inline-block;
+  text-indent: -2000em;
+  vertical-align: middle;
+}
