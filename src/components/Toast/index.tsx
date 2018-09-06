@@ -20,7 +20,7 @@ interface IToastProps {
   style?: IKVMap;
 }
 
-class Toast extends React.Component<IToastProps, any> {
+class Toast extends React.Component<IToastProps, {}> {
   constructor(props: IToastProps) {
     super(props);
   }
