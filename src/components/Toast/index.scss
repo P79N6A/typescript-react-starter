@@ -1,0 +1,10 @@
+:global {
+  .toast-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 15px;
+    background: green;
+  }
+}
