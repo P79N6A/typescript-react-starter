@@ -16,3 +16,13 @@
 ## TODO
 
 - 添加 React 组件测试模板代码
+
+## Test
+
+### Enzyme
+
+提供三中渲染方法：
+
+- shallow shallow 方法只会渲染出组件的第一层 DOM 结构。
+- render
+- mount
