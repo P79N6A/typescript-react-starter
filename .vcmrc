@@ -1,0 +1,16 @@
+{
+  "helpMessage": "\n 请修改你的提交信息 (and consider using https://www.npmjs.com/package/commitizen)\n",
+  "types": [
+    "feat",
+    "fix",
+    "docs",
+    "style",
+    "refactor",
+    "perf",
+    "test",
+    "chore",
+    "revert"
+  ],
+  "warnOnFail": false,
+  "autoFix": false
+}

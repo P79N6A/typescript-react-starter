@@ -47,7 +47,10 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "commitmsg": "validate-commit-msg",
+    "commit": "git-cz ",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css,scss,tsx,ts}": [
@@ -60,13 +63,16 @@
     "@types/node": "^10.9.3",
     "@types/react": "^16.4.12",
     "@types/react-dom": "^16.0.7",
+    "commitizen": "^2.10.1",
+    "conventional-changelog-cli": "^2.0.5",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
     "node-sass": "^4.9.3",
     "prettier": "^1.14.2",
     "sass-loader": "^7.1.0",
     "typescript": "^2.8.3",
-    "typings-for-css-modules-loader": "^1.7.0"
+    "typings-for-css-modules-loader": "^1.7.0",
+    "validate-commit-msg": "^2.14.0"
   },
   "jest": {
     "collectCoverageFrom": [
