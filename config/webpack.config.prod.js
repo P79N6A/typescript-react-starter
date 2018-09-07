@@ -172,47 +172,60 @@ module.exports = {
           // scss sass
           {
             test: /\.(scss|sass)$/,
-            use: [
-              require.resolve('style-loader'),
-              {
-                loader: require.resolve('typings-for-css-modules-loader'),
-                options: {
-                  importLoaders: 2, // 前置loader个数
-                  modules: true,
-                  namedExport: true,
-                  camelCase: true,
-                  localIdentName: "[local]---[hash:base64:8]",
-                  sourceMap: shouldUseSourceMap
-                },
-              },
-              {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  // Necessary for external CSS imports to work
-                  // https://github.com/facebookincubator/create-react-app/issues/2677
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9', // React doesn't support IE8 anyway
-                      ],
-                      flexbox: 'no-2009',
-                    }),
+            loader: ExtractTextPlugin.extract(
+              Object.assign(
+                {
+                  fallback: {
+                    loader: require.resolve('style-loader'),
+                    options: {
+                      hmr: false,
+                    },
+                  },
+                  use: [
+                    {
+                      loader: require.resolve('typings-for-css-modules-loader'),
+                      options: {
+                        importLoaders: 2, // 前置loader个数
+                        modules: true,
+                        namedExport: true,
+                        camelCase: true,
+                        localIdentName: "[hash:base64:8]",
+                        sourceMap: shouldUseSourceMap
+                      },
+                    },
+                    {
+                      loader: require.resolve('postcss-loader'),
+                      options: {
+                        // Necessary for external CSS imports to work
+                        // https://github.com/facebookincubator/create-react-app/issues/2677
+                        ident: 'postcss',
+                        plugins: () => [
+                          require('postcss-flexbugs-fixes'),
+                          autoprefixer({
+                            browsers: [
+                              '>1%',
+                              'last 4 versions',
+                              'Firefox ESR',
+                              'not ie < 9', // React doesn't support IE8 anyway
+                            ],
+                            flexbox: 'no-2009',
+                          }),
+                        ],
+                        sourcemap: shouldUseSourceMap
+                      },
+                    },
+                    {
+                      loader: require.resolve('sass-loader'),
+                      options: {
+                        sourcemap: shouldUseSourceMap
+                      }
+                    }
                   ],
-                  sourcemap: shouldUseSourceMap
                 },
-              },
-              {
-                loader: require.resolve('sass-loader'),
-                options: {
-                  sourcemap: shouldUseSourceMap
-                }
-              }
-            ],
+                extractTextPluginOptions
+              )
+            ),
+            // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
           },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
