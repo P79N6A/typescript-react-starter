@@ -1,0 +1,56 @@
+# gitlab-ci 样例文件，只加了很简单的任务
+## 使用方式：将本文件改名为 gitlab-ci.yml 即可
+## 官方文档：
+## https://gitlab.com/help/ci/quick_start/README
+##
+
+# 给node_modules设置缓存，这样就不用每次重新安装依赖，加快速度。
+cache:
+  paths:
+  - node_modules/
+
+# 在开始跑脚本之前，需要设置环境变量。主要为暴露一些必须的命令。
+before_script:
+  - export PATH=$PATH:/usr/local/bin
+  - export PATH=$PATH:/usr/bin
+
+# 结束之后清理工作
+# after_script:
+# - npm run clear
+
+stages:
+  - test
+  - deploy # 这里合并了 build 和 deploy
+  - release
+
+# 每次提交都需要跑一次基准 test，以保证当次提交不会导致 App crash
+test:
+  stage: test
+  script:
+   - yarn install ## 安装依赖
+   - yarn test
+
+deploy_dev:
+  stage: deploy
+  script:
+    - your dev build script here
+    - your deploy script here
+  only:
+    - dev
+
+deploy_pre:
+  stage: deploy
+  script:
+    - your pre-production build script here
+    - your deploy script here
+  only:
+    - dev
+
+deploy_prd:
+  stage: release
+  script:
+    - your production build script here
+    - your deploy script here
+  when: manual # 手动，不能轻易部署
+  only:
+    - master
