@@ -14,11 +14,13 @@ class App extends React.Component<any, IAppState> {
       showToast: false
     };
   }
+
   public toggleToast = () => {
     this.setState({
       showToast: !this.state.showToast
     });
   };
+
   public render() {
     return (
       <div className={style.app}>

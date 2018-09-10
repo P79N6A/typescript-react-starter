@@ -12,6 +12,8 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -308,6 +310,17 @@ module.exports = {
       tsconfig: paths.appTsConfig,
       tslint: paths.appTsLint,
     }),
+    // notifier ts-checker error, warning, success by OS notifier.
+    // https://github.com/johnnyreilly/fork-ts-checker-notifier-webpack-plugin
+    new ForkTsCheckerNotifierWebpackPlugin({
+      // If set to true, warnings will not cause a notification.
+      excludeWarnings: true,
+      // Skip notifications for successful builds.
+      skipSuccessful: true,
+      // Skip Notification on the First Build
+      skipFirstNotification: true
+     }),
+     new WebpackNotifierPlugin()
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
