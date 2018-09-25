@@ -42,6 +42,10 @@ yarn start
 - `yarn build`
 - `yarn test`
 
+## Style
+
+1.本项目默认使用了 SASS 预处理器，并开启了 CSS Module。在 style 的目录结构上也设计了 `src/style` 目录。
+
 ## Q&A
 
 Q: 为什么没有配置 `npm run lint`？
