@@ -16,7 +16,7 @@
 
 ## 使用
 
-1. 克隆项目：
+1. 克隆项目：
 
 ```bash
 git clone git@github.com:hifizz/typescript-react-starter.git ts-react-project
@@ -41,6 +41,13 @@ yarn start
 - `yarn start`
 - `yarn build`
 - `yarn test`
+
+## Browser Test
+
+```bash
+# 打开 cypress 测试，会实时监控
+yarn cypress:open
+```
 
 ## Q&A
 
