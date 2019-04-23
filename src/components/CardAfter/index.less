@@ -1,0 +1,55 @@
+@main-color: #bdeefe;
+
+.container {
+  color: #000;
+
+  .title {
+    margin: 0;
+  }
+
+  .content {
+    height: 100px;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer > button {
+    width: 120px;
+    height: 60px;
+    padding: 15px;
+    margin: 0 10px;
+  }
+}
+
+:global {
+  .buttons {
+    :local {
+      .card-footer-cancel,
+      .card-footer-confirm {
+        outline: none;
+      }
+    }
+  }
+}
+
+.card-footer-cancel, :global(.primary) {
+  border-radius: 8px;
+}
+
+.card-footer-cancel {
+  background-color: #ddd;
+}
+
+.card-footer-confirm {
+  color: #aaa;
+}
+
+:global {
+  .primary {
+    background-color: @main-color;
+  }
+}

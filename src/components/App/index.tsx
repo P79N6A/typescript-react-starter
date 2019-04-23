@@ -1,7 +1,10 @@
 import * as React from 'react';
-import * as style from './index.scss';
+import * as style from './index.less';
 import logo from 'assets/logo.svg';
 import { Toast } from '../Toast';
+import { CardAfter } from 'components/CardAfter';
+
+console.log(style);
 
 interface IAppState {
   showToast: boolean;
@@ -31,8 +34,9 @@ class App extends React.Component<any, IAppState> {
         </p>
         <button onClick={this.toggleToast}>click me</button>
         {this.state.showToast && (
-          <Toast text="哈哈哈哈哈哈，打不过我吧，没有办法，我就是这么强大" />
+          <Toast text="测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试" />
         )}
+        <CardAfter content={'I am content block'} />
       </div>
     );
   }
